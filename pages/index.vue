@@ -19,9 +19,9 @@ const loading = ref(false);
 async function obtenerNoticias() {
   loading.value = true;
   try {
-    const datos: any = await $fetch("/api/noticias");
-    noticias.value = datos.news;
-    console.log("Noticias obtenidas:", noticias.value);
+    /* const datos: any = await $fetch("/api/noticias"); */
+    /*    noticias.value = datos.news;
+    console.log("Noticias obtenidas:", noticias.value); */
   } catch (err) {
     console.error("Error al obtener noticias:", err);
   } finally {
