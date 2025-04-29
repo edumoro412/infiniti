@@ -5,6 +5,7 @@ export default defineNuxtConfig({
     currentsApiKey: process.env.NUXT_PUBLIC_APITUBE_API_KEY,
     public: {},
   },
+  css: ["@/assets/styles/css/variables.css", "@/assets/styles/scss/main.scss"],
 
   modules: [
     "@nuxt/eslint",
