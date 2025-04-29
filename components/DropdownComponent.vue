@@ -82,4 +82,14 @@ onBeforeUnmount(() => {
     color: var(--c-primary);
   }
 }
+
+@media (max-width: 26.25rem) {
+  .dropdown {
+    &__menu {
+      width: 70%;
+      padding: 0.3em 0.8em;
+      font-size: 0.9em;
+    }
+  }
+}
 </style>

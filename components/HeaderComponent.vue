@@ -15,7 +15,7 @@ const toggleTheme = () => {
         style="font-size: 3.3em"
         aria-label="Logo de INFINITI"
       />
-      <h1>INFINITI</h1>
+      <h1 class="header__logo--name">INFINITI</h1>
     </div>
     <div class="header__buttons">
       <Icon
@@ -87,6 +87,18 @@ const toggleTheme = () => {
   &.dark-theme {
     background-color: var(--c-secondary);
     color: var(--c-primary);
+  }
+}
+
+@media (max-width: 26.25rem) {
+  .header {
+    transition: transform 0.5s ease-in-out;
+    &__buttons {
+      font-size: 0.8em;
+    }
+    &__logo--name {
+      display: none;
+    }
   }
 }
 </style>
