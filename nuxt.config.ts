@@ -3,7 +3,9 @@ export default defineNuxtConfig({
   devtools: { enabled: true },
   runtimeConfig: {
     currentsApiKey: process.env.NUXT_PUBLIC_APITUBE_API_KEY,
-    public: {},
+    public: {
+      currentsApiKey: process.env.NUXT_PUBLIC_CURRENTS_API_KEY,
+    },
   },
   css: ["@/assets/styles/css/variables.css", "@/assets/styles/scss/main.scss"],
 
