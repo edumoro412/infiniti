@@ -1,35 +1,23 @@
 <script setup lang="ts">
 import { ref } from "vue";
+import type { NewsArticle, NewsResponse } from "~/interfaces/api/new";
 
-interface Noticia {
-  id: string;
-  title: string;
-  description: string;
-  url: string;
-  author: string;
-  image: string;
-  language: string;
-  category: string[];
-  published: string;
-}
-
-const noticias = ref<Noticia[]>([]);
 const loading = ref(false);
+const articles = ref<NewsArticle[]>([]);
 
-async function obtenerNoticias() {
+loading.value = true;
+onMounted(async () => {
   loading.value = true;
   try {
-    /* const datos: any = await $fetch("/api/noticias"); */
-    /*    noticias.value = datos.news;
-    console.log("Noticias obtenidas:", noticias.value); */
+    const datos: NewsResponse = await $fetch("/api/noticias");
+    console.log("Estos son los datos", datos);
+    articles.value = datos.articles;
   } catch (err) {
     console.error("Error al obtener noticias:", err);
   } finally {
     loading.value = false;
   }
-}
-
-obtenerNoticias();
+});
 </script>
 
 <template>
@@ -37,10 +25,11 @@ obtenerNoticias();
     <h1>Noticias</h1>
     <div v-if="loading">Cargando noticias...</div>
     <ul v-else>
-      <li v-for="noticia in noticias" :key="noticia.id">
-        <h2>{{ noticia.title }}</h2>
-        <p>{{ noticia.description }}</p>
-        <a :href="noticia.url" target="_blank">Leer más</a>
+      <li v-for="article in articles" :key="article.title">
+        <h2>{{ article.title }}</h2>
+        <p>{{ article.description }}</p>
+        <a :href="article.url" target="_blank">Leer más</a>
+        <img :src="article.urlToImage" alt="" />
       </li>
     </ul>
   </div>
