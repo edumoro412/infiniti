@@ -1,15 +1,19 @@
 export interface NewsArticle {
-  author: string;
-  content: string;
-  description: string;
-  publishedAt: string;
+  article_id: string;
   title: string;
-  url: string;
-  urlToImage: string;
+  link: string;
+  pubDate: string;
+  image_url: string;
+  source_name: string;
+  language: string;
+  country: string[];
+  category: string[];
+  description: string;
 }
 
 export interface NewsResponse {
   status: string;
   totalResults: number;
-  articles: NewsArticle[];
+  nextPage: string | null;
+  results: NewsArticle[];
 }
