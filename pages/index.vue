@@ -9,7 +9,12 @@ loading.value = true;
 onMounted(async () => {
   loading.value = true;
   try {
-    const datos: NewsResponse = await $fetch("/api/noticias");
+    const datos: NewsResponse = await $fetch("/api/news", {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+      },
+    });
     console.log("Estos son los datos", datos);
     articles.value = datos.results;
   } catch (err) {
@@ -29,7 +34,10 @@ onMounted(async () => {
         <h2>{{ article.title }}</h2>
         <p>{{ article.description }}</p>
         <a :href="article.link" target="_blank">Leer más</a>
-        <img :src="article.image_url" alt="Image of the new" />
+        <img
+          :src="article.image_url || '/noticia.png'"
+          alt="Image of the new"
+        />
       </li>
     </ul>
   </div>
