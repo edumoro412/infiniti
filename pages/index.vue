@@ -11,7 +11,7 @@ onMounted(async () => {
   try {
     const datos: NewsResponse = await $fetch("/api/noticias");
     console.log("Estos son los datos", datos);
-    articles.value = datos.articles;
+    articles.value = datos.results;
   } catch (err) {
     console.error("Error al obtener noticias:", err);
   } finally {
@@ -28,8 +28,8 @@ onMounted(async () => {
       <li v-for="article in articles" :key="article.title">
         <h2>{{ article.title }}</h2>
         <p>{{ article.description }}</p>
-        <a :href="article.url" target="_blank">Leer más</a>
-        <img :src="article.urlToImage" alt="" />
+        <a :href="article.link" target="_blank">Leer más</a>
+        <img :src="article.image_url" alt="Image of the new" />
       </li>
     </ul>
   </div>
