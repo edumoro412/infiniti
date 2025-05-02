@@ -7,7 +7,7 @@ const showDropdown = ref(false);
 const dropdownRef = ref<HTMLElement | null>(null);
 const categories = [
   "Deportes",
-  "Política",
+  "Negocios",
   "Ciencia",
   "Tecnología",
   "Salud",
