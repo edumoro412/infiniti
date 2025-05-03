@@ -1,9 +1,8 @@
-import type { NewsResponse } from "../interfaces/api/news";
-
+import type { NewsArticle, NewsResponse } from "~/interfaces/api/new";
 export default defineEventHandler(async () => {
   const config = useRuntimeConfig();
-  let url = `https://newsdata.io/api/1/latest?apikey=${config.currentsApiKey}&language=es&category=top`;
-  let allNews: NewsResponse[] = [];
+  let url = `https://newsdata.io/api/1/latest?apikey=${config.currentsApiKey}&language=es&country=es&category=top`;
+  let allNews: NewsArticle[] = [];
   let pageCounter = 0;
 
   try {
@@ -26,16 +25,19 @@ export default defineEventHandler(async () => {
         break;
       }
     }
+    console.log("Estas son todas las noticias", allNews);
     return {
       status: "success",
       totalResults: allNews.length,
       results: allNews,
     };
-  } catch (error: any) {
+  } catch (error: unknown) {
     console.error("Error al obtener noticias:", error);
+    const message =
+      error instanceof Error ? error.message : "Error al obtener noticias";
     throw createError({
-      statusCode: error.statusCode || 500,
-      statusMessage: error.statusMessage || "Error interno al obtener noticias",
+      statusCode: 500,
+      statusMessage: message,
     });
   }
 });
