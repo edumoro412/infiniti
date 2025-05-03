@@ -6,20 +6,12 @@ const themeStore = useThemeStore();
 const showDropdown = ref(false);
 const dropdownRef = ref<HTMLElement | null>(null);
 const categories = [
-  "Deportes",
-  "Negocios",
-  "Ciencia",
-  "Tecnología",
-  "Salud",
-  "Programación",
-  "Entretenimiento",
-  "Finanzas",
-  "Comida",
-  "Juegos",
-  "Viajes",
-  "Cultura",
-  "Arte",
-  "Música",
+  { Deportes: "sports" },
+  { Negocios: "business" },
+  { Ciencia: "science" },
+  { Tecnología: "technology" },
+  { Salud: "health" },
+  { Entretenimiento: "entertainment" },
 ];
 
 const handleClickOutside = (event: MouseEvent) => {
@@ -52,8 +44,14 @@ onBeforeUnmount(() => {
         class="dropdown__menu"
         :class="{ 'dark-theme': themeStore.darkTheme }"
       >
-        <li v-for="category in categories" :key="category">
-          {{ category }}
+        <li
+          v-for="category in categories"
+          :key="Object.values(category)[0]"
+          class="dropdown__menu--item"
+        >
+          <NuxtLink :to="Object.values(category)[0]">{{
+            Object.keys(category)[0]
+          }}</NuxtLink>
         </li>
       </ul>
     </transition>
@@ -92,9 +90,11 @@ onBeforeUnmount(() => {
     min-width: 9.375em;
     max-width: 20em;
 
-    li {
+    &--item {
       padding: 0.3em;
       cursor: pointer;
+      text-decoration: none;
+      color: inherit;
     }
   }
 
