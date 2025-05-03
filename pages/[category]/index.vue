@@ -1,7 +1,6 @@
 <script setup lang="ts">
-import { ref } from "vue";
 import type { NewsArticle, NewsResponse } from "~/interfaces/api/new";
-
+const category = computed(() => useRoute().params.category);
 const loading = ref(false);
 const articles = ref<NewsArticle[]>([]);
 
@@ -9,9 +8,13 @@ loading.value = true;
 onMounted(async () => {
   loading.value = true;
   try {
-    const datos: NewsResponse = await $fetch("/api/news", {
+    const datos: NewsResponse = await $fetch(`/api/${category.value}`, {
       method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+      },
     });
+    console.log("Estos son los datos", datos);
     articles.value = datos.results;
   } catch (err) {
     console.error("Error al obtener noticias:", err);
@@ -20,7 +23,6 @@ onMounted(async () => {
   }
 });
 </script>
-
 <template>
   <div>
     <h1>Noticias</h1>
@@ -38,3 +40,5 @@ onMounted(async () => {
     </ul>
   </div>
 </template>
+
+<style scoped lang="scsss"></style>
