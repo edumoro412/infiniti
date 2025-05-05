@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { ref } from "vue";
 import type { NewsArticle, NewsResponse } from "~/interfaces/api/new";
+import { icons } from "@/assets/icons/icons";
 
 const loading = ref(false);
 const articles = ref<NewsArticle[]>([]);
@@ -24,7 +25,7 @@ onMounted(async () => {
 <template>
   <div>
     <h1>Noticias</h1>
-    <div v-if="loading">Cargando noticias...</div>
+    <div v-if="loading" v-html="icons.loader" class="loader__container"></div>
     <ul v-else>
       <li v-for="article in articles" :key="article.title">
         <h2>{{ article.title }}</h2>
@@ -38,3 +39,12 @@ onMounted(async () => {
     </ul>
   </div>
 </template>
+<style scoped lang="scss">
+.loader__container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  font-size: 2em;
+}
+</style>
