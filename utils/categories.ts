@@ -1,4 +1,5 @@
 import type { NewsArticle, NewsResponse } from "@/interfaces/api/new";
+
 export async function fetchCategories(category: string) {
   const config = useRuntimeConfig();
   let url = `https://newsdata.io/api/1/news?apikey=${config.currentsApiKey}&language=es&country=es&category=${category}`;
@@ -22,13 +23,18 @@ export async function fetchCategories(category: string) {
           statusCode: 500,
           statusMessage: "Error interno al obtener noticias",
         });
-        break;
       }
     }
+
+    const uniqueNews = allNews.filter(
+      (article, index, self) =>
+        index === self.findIndex((a) => a.title === article.title)
+    );
+
     return {
       status: "success",
-      totalResults: allNews.length,
-      results: allNews,
+      totalResults: uniqueNews.length,
+      results: uniqueNews,
     };
   } catch (error: unknown) {
     console.error("Error al obtener noticias:", error);
