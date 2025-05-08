@@ -16,4 +16,14 @@ export default defineNuxtConfig({
     "@nuxt/icon",
     "@nuxt/image",
   ],
+
+  vite: {
+    css: {
+      preprocessorOptions: {
+        scss: {
+          additionalData: `@use "@/assets/styles/scss/mixins" as *;`,
+        },
+      },
+    },
+  },
 });
