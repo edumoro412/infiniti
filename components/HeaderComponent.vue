@@ -20,16 +20,16 @@ const toggleTheme = () => {
     <div class="header__buttons">
       <Icon
         v-if="themeStore.darkTheme"
-        name="material-symbols:sunny-rounded"
+        name="material-symbols:dark-mode"
         class="header__buttons--icon"
-        aria-label="Icono para el tema claro"
+        aria-label="Icono para el tema oscuro"
         @click="toggleTheme"
       />
       <Icon
         v-else
-        name="material-symbols:dark-mode"
+        name="material-symbols:sunny-rounded"
         class="header__buttons--icon"
-        aria-label="Icono para el tema oscuro"
+        aria-label="Icono para el tema claro"
         @click="toggleTheme"
       />
 
