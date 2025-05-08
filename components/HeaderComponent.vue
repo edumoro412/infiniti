@@ -10,12 +10,14 @@ const toggleTheme = () => {
 <template>
   <div class="header" :class="{ 'dark-theme': !themeStore.darkTheme }">
     <div class="header__logo">
-      <Icon
-        name="solar:infinity-bold"
-        style="font-size: 3.3em"
-        aria-label="Logo de INFINITI"
-      />
-      <h1 class="header__logo--name">INFINITI</h1>
+      <NuxtLink to="/" class="header__logo--link">
+        <Icon
+          name="solar:infinity-bold"
+          style="font-size: 3.3em"
+          aria-label="Logo de INFINITI"
+        />
+        <h1 class="header__logo--link-name">INFINITI</h1>
+      </NuxtLink>
     </div>
     <div class="header__buttons">
       <Icon
@@ -61,6 +63,13 @@ const toggleTheme = () => {
     display: flex;
     align-items: center;
     gap: 1em;
+    &--link {
+      display: flex;
+      align-items: center;
+      gap: 0.5em;
+      text-decoration: none;
+      color: inherit;
+    }
   }
 
   &__buttons {
