@@ -1,0 +1,11 @@
+@mixin grid(
+  $gap: 1em,
+  $minWidth: 1em,
+  $maxWidth: 22em,
+  $justify-content: center
+) {
+  display: grid;
+  gap: $gap;
+  justify-content: $justify-content;
+  grid-template-columns: repeat(auto-fit, minmax($minWidth, $maxWidth));
+}
