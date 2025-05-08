@@ -1,8 +1,10 @@
 import type { NewsArticle, NewsResponse } from "~/interfaces/api/new";
+
 export default defineEventHandler(async () => {
   const config = useRuntimeConfig();
   let url = `https://newsdata.io/api/1/latest?apikey=${config.currentsApiKey}&language=es&country=es&category=top`;
   let allNews: NewsArticle[] = [];
+  const seenTitles = new Set<string>();
   let pageCounter = 0;
 
   try {
@@ -12,19 +14,29 @@ export default defineEventHandler(async () => {
       });
 
       if (response.status === "success") {
-        allNews = allNews.concat(response.results);
+        const uniqueResults = response.results.filter((article) => {
+          if (!article.title || seenTitles.has(article.title)) {
+            return false;
+          }
+          seenTitles.add(article.title);
+          return true;
+        });
+
+        allNews = allNews.concat(uniqueResults);
+
         url = response.nextPage
           ? `https://newsdata.io/api/1/latest?apikey=${config.currentsApiKey}&language=es&category=top&page=${response.nextPage}`
           : "";
+
         pageCounter++;
       } else {
         throw createError({
           statusCode: 500,
           statusMessage: "Error interno al obtener noticias",
         });
-        break;
       }
     }
+
     console.log("Estas son todas las noticias", allNews);
     return {
       status: "success",
