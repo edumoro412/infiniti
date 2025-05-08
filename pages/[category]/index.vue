@@ -4,10 +4,6 @@ import type { NewsArticle, NewsResponse } from "~/interfaces/api/new";
 import { useRoute } from "vue-router";
 import { useThemeStore } from "~/stores/theme";
 
-definePageMeta({
-  middleware: "check-category",
-});
-
 const store = useThemeStore();
 const darkTheme = computed(() => store.darkTheme);
 const category = computed(() => useRoute().params.category);
