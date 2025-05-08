@@ -1,14 +1,49 @@
 <script setup lang="ts">
+import { ref, onMounted, onUnmounted } from "vue";
 import { useThemeStore } from "~/stores/theme";
 
 const themeStore = useThemeStore();
+const showHeader = ref(true);
+const lastScrollPosition = ref(0);
+
 const toggleTheme = () => {
   themeStore.toggleDarkTheme();
 };
+
+const handleScroll = () => {
+  const currentScrollPosition = window.pageYOffset;
+
+  if (currentScrollPosition < 0) {
+    showHeader.value = true;
+    return;
+  }
+
+  if (Math.abs(currentScrollPosition - lastScrollPosition.value) < 60) {
+    return; //Este return esta para que si el desplazamiento es muy leve se sale de la funcion aqui y no actualiza el valor de lastScrollPosition porque ha sido muy poco
+  }
+
+  showHeader.value = currentScrollPosition < lastScrollPosition.value;
+
+  lastScrollPosition.value = currentScrollPosition;
+};
+
+onMounted(() => {
+  window.addEventListener("scroll", handleScroll);
+});
+
+onUnmounted(() => {
+  window.removeEventListener("scroll", handleScroll);
+});
 </script>
 
 <template>
-  <div class="header" :class="{ 'dark-theme': !themeStore.darkTheme }">
+  <div
+    class="header"
+    :class="{
+      'dark-theme': !themeStore.darkTheme,
+      'header--hidden': !showHeader,
+    }"
+  >
     <div class="header__logo">
       <NuxtLink to="/" class="header__logo--link">
         <Icon
@@ -34,7 +69,6 @@ const toggleTheme = () => {
         aria-label="Icono para el tema claro"
         @click="toggleTheme"
       />
-
       <Icon
         name="ic:round-watch-later"
         class="header__buttons--icon"
@@ -52,12 +86,18 @@ const toggleTheme = () => {
 
 <style scoped lang="scss">
 .header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
   background-color: var(--c-primary);
   color: var(--c-secondary);
   padding: 0.5em;
   display: flex;
   justify-content: space-between;
   align-items: center;
+  transition: transform 0.3s ease-out;
+  z-index: 1000;
 
   &__logo {
     display: flex;
@@ -76,17 +116,16 @@ const toggleTheme = () => {
     display: flex;
     align-items: center;
     gap: 1em;
-
     &--icon {
       font-size: 1.7em;
       transition: transform 0.3s ease-in-out;
-      &-weather {
-        transition: transform 0.3s ease-in-out;
-        font-size: 2em;
-        &:hover {
-          transform: scale(1.1);
-        }
+      &:hover {
+        transform: scale(1.1);
       }
+    }
+    &--icon-weather {
+      transition: transform 0.3s ease-in-out;
+      font-size: 2em;
       &:hover {
         transform: scale(1.1);
       }
@@ -96,6 +135,10 @@ const toggleTheme = () => {
   &.dark-theme {
     background-color: var(--c-secondary);
     color: var(--c-primary);
+  }
+
+  &--hidden {
+    transform: translateY(-100%);
   }
 }
 
