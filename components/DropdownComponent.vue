@@ -19,6 +19,9 @@ const handleClickOutside = (event: MouseEvent) => {
     showDropdown.value = false;
   }
 };
+const handleClick = () => {
+  showDropdown.value = false;
+};
 
 onMounted(() => {
   document.addEventListener("click", handleClickOutside);
@@ -48,6 +51,7 @@ onBeforeUnmount(() => {
           v-for="category in categories"
           :key="Object.values(category)[0]"
           class="dropdown__menu--item"
+          @click="handleClick"
         >
           <NuxtLink :to="Object.values(category)[0]">{{
             Object.keys(category)[0]
