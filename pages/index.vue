@@ -58,7 +58,7 @@ onMounted(() => {
 </template>
 <style lang="scss" scoped>
 .loader__container {
-  background-color: var(--c-fourth);
+  background-color: var(--c-secondary);
   min-height: 100vh;
   padding: 10em 0;
   display: flex;
@@ -67,7 +67,7 @@ onMounted(() => {
   font-size: 2em;
 }
 .dark-theme {
-  background-color: var(--c-secondary);
+  background-color: var(--c-fourth);
   &__icon {
     filter: invert(1);
   }
