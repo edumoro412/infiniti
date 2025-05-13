@@ -16,7 +16,7 @@ defineProps<{
   <div class="icon">
     <IconClearDay v-if="prec === 0 && max > 20 && min > 10" alt="Día soleado" />
     <IconPartlyCloud
-      v-else-if="prec === 0 && max > 15 && max <= 21 && min >= 5"
+      v-else-if="prec === 0 && max > 15 && max <= 23 && min >= 5"
       alt="Parcialmente nublado"
     />
     <IconCloudy v-else-if="prec === 0 && max <= 15 && min < 10" alt="Nublado" />
