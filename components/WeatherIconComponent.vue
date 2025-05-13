@@ -5,6 +5,7 @@ import IconPartlyCloudRain from "@/assets/icons/partly-cloudy-day-rain.svg";
 import IconPartlyCloud from "@/assets/icons/partly-cloudy-day.svg";
 import IconRain from "@/assets/icons/rain.svg";
 import IconNotAvailable from "@/assets/icons/not-available.svg";
+
 defineProps<{
   prec: number;
   max: number;
