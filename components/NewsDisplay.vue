@@ -12,7 +12,7 @@ defineProps<{
 <template>
   <div class="container" :class="{ 'dark-theme': darkTheme }">
     <h1 class="container__title">NOTICIAS</h1>
-
+    <FormComponent />
     <ul class="news">
       <li
         v-for="article in articles"
