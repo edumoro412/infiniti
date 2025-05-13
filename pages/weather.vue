@@ -9,6 +9,17 @@ const latitude = ref<number | null>(null);
 const longitude = ref<number | null>(null);
 const isLoading = ref(true);
 
+const formatDate = (dateStr: string): string => {
+  const date = new Date(dateStr);
+  const formatted = date.toLocaleDateString("es-ES", {
+    weekday: "long",
+    day: "2-digit",
+    month: "2-digit",
+  });
+
+  return formatted.charAt(0).toUpperCase() + formatted.slice(1);
+};
+
 onMounted(async () => {
   await new Promise<void>((resolve) => {
     navigator.geolocation.getCurrentPosition(
@@ -34,20 +45,26 @@ const { data: weatherData } = useFetch<Weather>("/api/weather", {
   watch: [latitude, longitude],
   immediate: false,
 });
-
-console.log(weatherData);
 </script>
 
 <template>
   <div class="container" :class="{ 'dark-theme': darkTheme }">
+    <h1 class="container__title">Tiempo</h1>
     <div v-if="isLoading">Obteniendo ubicación...</div>
     <div v-else-if="weatherData" class="weather">
       <div
         v-for="(day, index) in weatherData.daily.time"
         :key="index"
-        class="day-weather"
+        class="weather__day"
       >
-        <h2>Día {{ index + 1 }}: {{ day }}</h2>
+        <h2 v-if="index === 0">Hoy</h2>
+        <h2 v-else-if="index === 1">Mañana</h2>
+        <h2 v-else>{{ formatDate(day) }}</h2>
+        <WeatherIconComponent
+          :prec="weatherData.daily.precipitation_sum[index]"
+          :max="weatherData.daily.temperature_2m_max[index]"
+          :min="weatherData.daily.temperature_2m_min[index]"
+        />
         <p>
           Precipitaciones:
           {{ weatherData.daily.precipitation_sum[index] }}mm
@@ -67,10 +84,38 @@ console.log(weatherData);
 <style scoped lang="scss">
 .container {
   min-height: 100vh;
-  padding: 20em;
+  padding: 6em 0;
+  &__title {
+    text-align: center;
+  }
 }
 .weather {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+
+  &__day {
+    width: 23%;
+    border: 1px solid var(--border-color);
+    padding: 2rem;
+    border-radius: 8px;
+    background-color: var(--background-color);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+
+    @media (max-width: 1024px) {
+      width: 30%;
+    }
+
+    @media (max-width: 768px) {
+      width: 48%;
+    }
+
+    @media (max-width: 480px) {
+      width: 100%;
+    }
+  }
 }
+
 .dark-theme {
   background-color: var(--c-fourth);
   color: var(--c-secondary);
