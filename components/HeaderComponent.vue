@@ -74,11 +74,13 @@ onUnmounted(() => {
         class="header__buttons--icon"
         aria-label="Icono de las últimas noticias"
       />
-      <Icon
-        name="fluent:weather-partly-cloudy-day-48-filled"
-        class="header__buttons--icon-weather"
-        aria-label="Icono de el tiempo"
-      />
+      <NuxtLink to="/weather"
+        ><Icon
+          name="fluent:weather-partly-cloudy-day-48-filled"
+          class="header__buttons--icon-weather"
+          aria-label="Icono de el tiempo"
+      /></NuxtLink>
+
       <DropdownComponent />
     </div>
   </div>
