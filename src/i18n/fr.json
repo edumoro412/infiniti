@@ -1,0 +1,26 @@
+{
+  "categories": {
+    "sports": "Sports",
+    "business": "Affaires",
+    "science": "Science",
+    "technology": "Technologie",
+    "health": "Santé",
+    "entertainment": "Divertissement"
+  },
+  "news_display": {
+    "news": "Actualités"
+  },
+  "search": {
+    "error": "Désolé. Nous n'avons trouvé aucune actualité liée",
+    "return": "Retour à l'accueil"
+  },
+  "weather": {
+    "weather": "Météo",
+    "ubication": "Obtention de la position...",
+    "today": "Aujourd'hui",
+    "tomorrow": "Demain",
+    "precipitations": "Précipitations",
+    "max": "Température maximale",
+    "min": "Température minimale"
+  }
+}
