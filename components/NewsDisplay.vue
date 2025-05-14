@@ -44,8 +44,7 @@ defineProps<{
   min-height: 100vh;
   padding: 5em 0;
   &__title {
-    text-align: center;
-    padding: 1em 0;
+    @include title();
   }
 }
 

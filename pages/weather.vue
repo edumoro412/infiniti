@@ -1,10 +1,10 @@
 <script setup lang="ts">
-import { ref } from "vue";
+import { ref, computed, onMounted } from "vue";
 import { useThemeStore } from "~/stores/theme";
 import type { Weather } from "~/interfaces/api/weather";
+import { useI18n } from "#imports";
 
 const { locale } = useI18n();
-
 const theme = useThemeStore();
 const darkTheme = computed(() => theme.darkTheme);
 const latitude = ref<number | null>(null);
@@ -25,7 +25,7 @@ const formatDate = (dateStr: string): string => {
 onMounted(async () => {
   await new Promise<void>((resolve) => {
     navigator.geolocation.getCurrentPosition(
-      function (position) {
+      (position) => {
         latitude.value = position.coords.latitude;
         longitude.value = position.coords.longitude;
         resolve();
@@ -48,9 +48,8 @@ const { data: weatherData } = useFetch<Weather>("/api/weather", {
   immediate: false,
 });
 </script>
-
 <template>
-  <div class="container" :class="{ 'dark-theme': darkTheme }">
+  <div :class="['container', { 'dark-theme': darkTheme }]">
     <h1 class="container__title">{{ $t("weather.weather") }}</h1>
     <div v-if="isLoading">{{ $t("weather.ubication") }}</div>
     <div v-else-if="weatherData" class="weather">
@@ -62,11 +61,13 @@ const { data: weatherData } = useFetch<Weather>("/api/weather", {
         <h2 v-if="index === 0">{{ $t("weather.today") }}</h2>
         <h2 v-else-if="index === 1">{{ $t("weather.tomorrow") }}</h2>
         <h2 v-else>{{ formatDate(day) }}</h2>
+
         <WeatherIconComponent
           :prec="weatherData.daily.precipitation_sum[index]"
           :max="weatherData.daily.temperature_2m_max[index]"
           :min="weatherData.daily.temperature_2m_min[index]"
         />
+
         <p>
           {{ $t("weather.precipitations") }}:
           {{ weatherData.daily.precipitation_sum[index] }}mm
@@ -83,43 +84,83 @@ const { data: weatherData } = useFetch<Weather>("/api/weather", {
     </div>
   </div>
 </template>
+
 <style scoped lang="scss">
 .container {
   min-height: 100vh;
-  padding: 6em 0;
+  padding: 4em 2em;
+  background: linear-gradient(135deg, #81ceec, #034879);
+
+  color: var(--c-secondary);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  transition: background-color 0.3s ease, color 0.3s ease;
+
   &__title {
-    text-align: center;
+    @include title();
   }
 }
+
 .weather {
   display: flex;
   flex-wrap: wrap;
-  gap: 1rem;
+  justify-content: center;
+  gap: 2rem;
+  width: 100%;
+  max-width: 1200px;
 
   &__day {
-    width: 23%;
-    border: 1px solid var(--border-color);
+    backdrop-filter: blur(12px);
+    background-color: rgba(255, 255, 255, 0.1);
+    color: inherit;
+    border-radius: 1.5rem;
     padding: 2rem;
-    border-radius: 8px;
-    background-color: var(--background-color);
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    width: 22%;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    backdrop-filter: blur(10px);
+
+    &:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 12px 30px rgba(0, 0, 0, 0.2);
+    }
+
+    h2 {
+      font-size: 1.3rem;
+      font-weight: 700;
+      margin-bottom: 1rem;
+      color: inherit;
+      text-align: center;
+    }
+
+    p {
+      margin: 0.4rem 0;
+      font-size: 0.95rem;
+      line-height: 1.5;
+      text-align: center;
+    }
 
     @media (max-width: 1024px) {
-      width: 30%;
+      width: 45%;
     }
 
     @media (max-width: 768px) {
-      width: 48%;
-    }
-
-    @media (max-width: 480px) {
       width: 100%;
+      padding: 1.5rem;
     }
   }
 }
 
 .dark-theme {
-  background-color: var(--c-fourth);
+  background: linear-gradient(135deg, var(--c-fourth), #121212);
   color: var(--c-secondary);
+
+  .weather__day {
+    background-color: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
+  }
 }
 </style>
