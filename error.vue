@@ -14,7 +14,7 @@ const goHome = () => {
 <template>
   <div class="error" :class="{ 'dark-theme': darkTheme }">
     <h1 class="error__title" :class="{ 'dark-theme__title': darkTheme }">
-      404: Lo sentimos, no hemos podido encontrar esa página
+      Ups. Algo no ha ido como deberia.
     </h1>
     <section class="error__animation">
       <LottieAnimation />
@@ -31,7 +31,7 @@ const goHome = () => {
 .error {
   position: relative;
   padding: 10em 0;
-  height: 100%;
+  min-height: 100vh;
   background: linear-gradient(45deg, #ff6a00, #ee0979);
   background-size: 400% 400%;
   animation: gradient 15s ease infinite;
