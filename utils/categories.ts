@@ -1,8 +1,9 @@
 import type { NewsArticle, NewsResponse } from "@/interfaces/api/new";
+import type { Lang } from "~/interfaces/lang";
 
-export async function fetchCategories(category: string) {
+export async function fetchCategories(category: string, locale: Lang) {
   const config = useRuntimeConfig();
-  let url = `https://newsdata.io/api/1/news?apikey=${config.currentsApiKey}&language=es&country=es&category=${category}`;
+  let url = `https://newsdata.io/api/1/news?apikey=${config.currentsApiKey}&language=${locale}&country=es&category=${category}`;
   let allNews: NewsArticle[] = [];
   let pageCounter = 0;
 
@@ -15,7 +16,7 @@ export async function fetchCategories(category: string) {
       if (response.status === "success") {
         allNews = allNews.concat(response.results);
         url = response.nextPage
-          ? `https://newsdata.io/api/1/news?apikey=${config.currentsApiKey}&language=es&country=es&category=${category}&page=${response.nextPage}`
+          ? `https://newsdata.io/api/1/news?apikey=${config.currentsApiKey}&language=${locale}&country=es&category=${category}&page=${response.nextPage}`
           : "";
         pageCounter++;
       } else {
