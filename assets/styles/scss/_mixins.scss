@@ -15,3 +15,21 @@
   justify-content: $justify-content;
   align-items: $align-items;
 }
+
+@mixin title(
+  $font-size: 3em,
+  $font-weight: 800,
+  $margin-bottom: 3rem,
+  $padding: 0.5em 0,
+  $text-align: center,
+  $color: inherit,
+  $text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.15)
+) {
+  font-size: $font-size;
+  font-weight: $font-weight;
+  margin-bottom: $margin-bottom;
+  padding: $padding;
+  text-align: $text-align;
+  color: $color;
+  text-shadow: $text-shadow;
+}
