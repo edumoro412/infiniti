@@ -7,7 +7,7 @@ export default withNuxt({
       "error",
       {
         html: {
-          void: "always", // Permite <img />, <input />, etc.
+          void: "always", 
           normal: "never",
           component: "always",
         },
@@ -15,5 +15,6 @@ export default withNuxt({
         math: "always",
       },
     ],
+
   },
 });
