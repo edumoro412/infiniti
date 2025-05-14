@@ -22,5 +22,8 @@
     "precipitations": "Precipitações",
     "max": "Temperatura máxima",
     "min": "Temperatura mínima"
+  },
+  "error": {
+    "error": "Ops... Algo não saiu como deveria"
   }
 }
