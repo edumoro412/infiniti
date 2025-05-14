@@ -45,9 +45,14 @@ watch(
     </div>
 
     <div v-if="data && data.results.length === 0" class="container__error">
-      <h1>No se encontraron noticias</h1>
+      <h1>Lo sentimos. No hemos encontraron noticias relacionadas</h1>
       <NuxtLink to="/" class="container__error--button"
-        >Volver al inicio</NuxtLink
+        ><button
+          class="container__error--button"
+          :class="{ 'dark-theme__button': darkTheme }"
+        >
+          Volver al inicio
+        </button></NuxtLink
       >
     </div>
   </div>
@@ -55,22 +60,35 @@ watch(
 
 <style scoped lang="scss">
 .container {
-  height: 100vh;
-  padding: 10em 0;
+  min-height: 100vh;
+  padding: 2em 0;
   &__loading {
     @include center();
   }
   &__error {
+    padding: 5em 0;
     @include center();
     flex-direction: column;
 
     &--button {
       display: block;
+      background-color: var(--c-secondary);
+      padding: 0.5em 1.5em;
+      border: none;
+      border-radius: 0.625rem;
+      margin: 1em 0;
+      &:hover {
+        background-color: var(--c-fourth);
+        color: var(--c-secondary);
+      }
     }
   }
 }
 .dark-theme {
   background-color: var(--c-fourth);
   color: var(--c-secondary);
+  &__button {
+    background-color: var(--c-primary);
+  }
 }
 </style>
