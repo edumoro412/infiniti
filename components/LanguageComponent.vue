@@ -13,7 +13,8 @@ const languages = [
   { code: "en", name: "English", flag: "circle-flags:us" },
   { code: "fr", name: "Français", flag: "circle-flags:fr" },
   { code: "pt", name: "Português", flag: "circle-flags:pt" },
-  { code: "zh", name: "中文", flag: "circle-flags:cn" },
+  { code: "de", name: "Deutsch", flag: "circle-flags:de" },
+  { code: "it", name: "Italiano", flag: "circle-flags:it" },
 ];
 
 const currentFlag = ref(
