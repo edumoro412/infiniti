@@ -54,7 +54,7 @@ onBeforeUnmount(() => {
           @click="handleClick"
         >
           <NuxtLink :to="Object.values(category)[0]">{{
-            Object.keys(category)[0]
+            $t(`categories.${Object.values(category)[0]}`)
           }}</NuxtLink>
         </li>
       </ul>

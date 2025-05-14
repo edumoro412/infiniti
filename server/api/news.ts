@@ -1,8 +1,9 @@
 import type { NewsArticle, NewsResponse } from "~/interfaces/api/new";
 
-export default defineEventHandler(async () => {
+export default defineEventHandler(async (event) => {
   const config = useRuntimeConfig();
-  let url = `https://newsdata.io/api/1/latest?apikey=${config.currentsApiKey}&language=es&country=es&category=top`;
+  const locale = getQuery(event).locale || "es";
+  let url = `https://newsdata.io/api/1/latest?apikey=${config.currentsApiKey}&language=${locale}&category=top`;
   let allNews: NewsArticle[] = [];
   const seenTitles = new Set<string>();
   let pageCounter = 0;
@@ -25,7 +26,7 @@ export default defineEventHandler(async () => {
         allNews = allNews.concat(uniqueResults);
 
         url = response.nextPage
-          ? `https://newsdata.io/api/1/latest?apikey=${config.currentsApiKey}&language=es&category=top&page=${response.nextPage}`
+          ? `https://newsdata.io/api/1/latest?apikey=${config.currentsApiKey}&language=${locale}&category=top&page=${response.nextPage}`
           : "";
 
         pageCounter++;

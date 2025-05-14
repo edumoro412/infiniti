@@ -1,45 +1,48 @@
 <script setup lang="ts">
-import { ref, onMounted } from "vue";
+import { ref, onMounted, watch } from "vue";
 import type { NewsArticle, NewsResponse } from "~/interfaces/api/new";
 import { Icon } from "#components";
 import { useThemeStore } from "~/stores/theme";
+import { useI18n } from "vue-i18n";
 
 const store = useThemeStore();
 const darkTheme = computed(() => store.darkTheme);
 const loading = ref(false);
 const articles = ref<NewsArticle[]>([]);
+const { locale } = useI18n();
 
 const fetchData = async () => {
-  const cachedData = localStorage.getItem("newsData");
-  const cachedTimestamp = localStorage.getItem("newsTimestamp");
-  const currentTime = new Date().getTime();
-  if (
-    cachedData &&
-    cachedTimestamp &&
-    currentTime - parseInt(cachedTimestamp) < 5 * 60 * 1000
-  ) {
-    articles.value = JSON.parse(cachedData);
-  } else {
-    loading.value = true;
-    try {
-      const response: NewsResponse = await $fetch("/api/news", {
+  loading.value = true;
+  try {
+    const response: NewsResponse = await $fetch(
+      `/api/news?locale=${locale.value}`,
+      {
         method: "GET",
-      });
-      articles.value = response.results;
-
-      localStorage.setItem("newsData", JSON.stringify(articles.value));
-      localStorage.setItem("newsTimestamp", currentTime.toString());
-    } catch (err) {
-      console.error("Error al obtener noticias:", err);
-    } finally {
-      loading.value = false;
-    }
+      }
+    );
+    articles.value = response.results;
+    localStorage.setItem("newsData", JSON.stringify(articles.value));
+    localStorage.setItem("newsTimestamp", new Date().getTime().toString());
+  } catch (err) {
+    console.error("Error al obtener noticias:", err);
+    articles.value = [];
+  } finally {
+    loading.value = false;
   }
 };
 
 onMounted(() => {
   fetchData();
 });
+
+watch(
+  () => locale.value,
+  () => {
+    localStorage.removeItem("newsData");
+    localStorage.removeItem("newsTimestamp");
+    fetchData();
+  }
+);
 </script>
 
 <template>

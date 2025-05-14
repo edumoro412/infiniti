@@ -1,0 +1,29 @@
+{
+  "categories": {
+    "sports": "Sport",
+    "business": "Wirtschaft",
+    "science": "Wissenschaft",
+    "technology": "Technologie",
+    "health": "Gesundheit",
+    "entertainment": "Unterhaltung"
+  },
+  "news_display": {
+    "news": "NACHRICHTEN"
+  },
+  "search": {
+    "error": "Es tut uns leid. Es wurden keine passenden Nachrichten gefunden",
+    "return": "Zurück zur Startseite"
+  },
+  "weather": {
+    "weather": "Wetter",
+    "ubication": "Standort wird ermittelt...",
+    "today": "Heute",
+    "tomorrow": "Morgen",
+    "precipitations": "Niederschläge",
+    "max": "Höchsttemperatur",
+    "min": "Tiefsttemperatur"
+  },
+  "error": {
+    "error": "Ups... Etwas ist schiefgelaufen"
+  }
+}

@@ -2,7 +2,8 @@
 import { ref } from "vue";
 import { useThemeStore } from "~/stores/theme";
 import type { Weather } from "~/interfaces/api/weather";
-import { initI18n, t } from "~/src/i18n";
+
+const { locale } = useI18n();
 
 const theme = useThemeStore();
 const darkTheme = computed(() => theme.darkTheme);
@@ -12,7 +13,7 @@ const isLoading = ref(true);
 
 const formatDate = (dateStr: string): string => {
   const date = new Date(dateStr);
-  const formatted = date.toLocaleDateString("es-ES", {
+  const formatted = date.toLocaleDateString(locale.value, {
     weekday: "long",
     day: "2-digit",
     month: "2-digit",
@@ -36,8 +37,6 @@ onMounted(async () => {
     );
   });
   isLoading.value = false;
-
-  await initI18n();
 });
 
 const { data: weatherData } = useFetch<Weather>("/api/weather", {
@@ -52,16 +51,16 @@ const { data: weatherData } = useFetch<Weather>("/api/weather", {
 
 <template>
   <div class="container" :class="{ 'dark-theme': darkTheme }">
-    <h1 class="container__title">{{ t("weather.weather") }}</h1>
-    <div v-if="isLoading">{{ t("weather.ubication") }}</div>
+    <h1 class="container__title">{{ $t("weather.weather") }}</h1>
+    <div v-if="isLoading">{{ $t("weather.ubication") }}</div>
     <div v-else-if="weatherData" class="weather">
       <div
         v-for="(day, index) in weatherData.daily.time"
         :key="index"
         class="weather__day"
       >
-        <h2 v-if="index === 0">{{ t("weather.today") }}</h2>
-        <h2 v-else-if="index === 1">{{ t("weather.tomorrow") }}</h2>
+        <h2 v-if="index === 0">{{ $t("weather.today") }}</h2>
+        <h2 v-else-if="index === 1">{{ $t("weather.tomorrow") }}</h2>
         <h2 v-else>{{ formatDate(day) }}</h2>
         <WeatherIconComponent
           :prec="weatherData.daily.precipitation_sum[index]"
@@ -69,15 +68,15 @@ const { data: weatherData } = useFetch<Weather>("/api/weather", {
           :min="weatherData.daily.temperature_2m_min[index]"
         />
         <p>
-          {{ t("weather.precipitations") }}:
+          {{ $t("weather.precipitations") }}:
           {{ weatherData.daily.precipitation_sum[index] }}mm
         </p>
         <p>
-          {{ t("weather.max") }}:
+          {{ $t("weather.max") }}:
           {{ weatherData.daily.temperature_2m_max[index] }}°C
         </p>
         <p>
-          T{{ t("weather.min") }}:
+          {{ $t("weather.min") }}:
           {{ weatherData.daily.temperature_2m_min[index] }}°C
         </p>
       </div>

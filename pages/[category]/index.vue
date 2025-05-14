@@ -8,6 +8,7 @@ definePageMeta({
   middleware: "check-category",
 });
 
+const { locale } = useI18n();
 const store = useThemeStore();
 const darkTheme = computed(() => store.darkTheme);
 const category = computed(() => useRoute().params.category);
@@ -29,12 +30,15 @@ const fetchData = async () => {
   } else {
     loading.value = true;
     try {
-      const response: NewsResponse = await $fetch(`/api/${category.value}`, {
-        method: "GET",
-        headers: {
-          "Content-Type": "application/json",
-        },
-      });
+      const response: NewsResponse = await $fetch(
+        `/api/${category.value}?locale=${locale.value}`,
+        {
+          method: "GET",
+          headers: {
+            "Content-Type": "application/json",
+          },
+        }
+      );
       articles.value = response.results;
 
       localStorage.setItem(

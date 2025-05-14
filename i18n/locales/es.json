@@ -8,7 +8,7 @@
     "entertainment": "Entretenimiento"
   },
   "news_display": {
-    "news": "Noticias"
+    "news": "NOTICIAS"
   },
   "search": {
     "error": "Lo sentimos. No hemos encontraron noticias relacionadas",
@@ -22,5 +22,8 @@
     "precipitations": "Precipitaciones",
     "max": "Temperatura máxima",
     "min": "Temperatura mínima"
+  },
+  "error": {
+    "error": "Ups... Algo no salió como debería"
   }
 }

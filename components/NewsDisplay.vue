@@ -11,7 +11,7 @@ defineProps<{
 </script>
 <template>
   <div class="container" :class="{ 'dark-theme': darkTheme }">
-    <h1 class="container__title">NOTICIAS</h1>
+    <h1 class="container__title">{{ $t("news_display.news") }}</h1>
     <FormComponent />
     <ul class="news">
       <li

@@ -27,7 +27,20 @@ export default defineNuxtConfig({
     "@nuxt/icon",
     "@nuxt/image",
     "nuxt-svgo",
+    "@nuxtjs/i18n",
   ],
+  i18n: {
+    defaultLocale: "fr",
+    locales: [
+      { code: "es", name: "Español", file: "es.json" },
+      { code: "en", name: "English", file: "en.json" },
+      { code: "fr", name: "Français", file: "fr.json" },
+      { code: "pt", name: "Português", file: "pt.json" },
+      { code: "de", name: "Deutsch", file: "de.json" },
+      { code: "it", name: "Italiano", file: "it.json" },
+    ],
+    strategy: "no_prefix",
+  },
 
   vite: {
     css: {

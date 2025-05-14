@@ -14,14 +14,14 @@ const goHome = () => {
 <template>
   <div class="error" :class="{ 'dark-theme': darkTheme }">
     <h1 class="error__title" :class="{ 'dark-theme__title': darkTheme }">
-      Ups. Algo no ha ido como deberia.
+      {{ $t("error.error") }}
     </h1>
     <section class="error__animation">
       <LottieAnimation />
     </section>
     <NuxtLink to="/" class="error__button">
       <button class="error__button--button" @click="goHome">
-        Regresar al inicio
+        {{ $t("search.return") }}
       </button>
     </NuxtLink>
   </div>
