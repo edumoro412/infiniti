@@ -8,7 +8,18 @@ export default defineNuxtConfig({
     },
   },
   css: ["@/assets/styles/css/variables.css", "@/assets/styles/scss/main.scss"],
-
+  app: {
+    head: {
+      title: "INFINITI",
+      link: [
+        {
+          rel: "icon",
+          type: "image/png",
+          href: "/imgs/infinito.png",
+        },
+      ],
+    },
+  },
   modules: [
     "@nuxt/eslint",
     "@nuxt/content",
