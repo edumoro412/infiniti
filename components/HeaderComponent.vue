@@ -19,11 +19,10 @@ const handleScroll = () => {
   }
 
   if (Math.abs(currentScrollPosition - lastScrollPosition.value) < 60) {
-    return; //Este return esta para que si el desplazamiento es muy leve se sale de la funcion aqui y no actualiza el valor de lastScrollPosition porque ha sido muy poco
+    return;
   }
 
   showHeader.value = currentScrollPosition < lastScrollPosition.value;
-
   lastScrollPosition.value = currentScrollPosition;
 };
 
@@ -44,16 +43,7 @@ onUnmounted(() => {
       'header--hidden': !showHeader,
     }"
   >
-    <div class="header__logo">
-      <NuxtLink to="/" class="header__logo--link">
-        <Icon
-          name="solar:infinity-bold"
-          style="font-size: 3.3em"
-          aria-label="Logo de INFINITI"
-        />
-        <h1 class="header__logo--link-name">INFINITI</h1>
-      </NuxtLink>
-    </div>
+    <NameLogoComponent />
     <div class="header__buttons">
       <Icon
         v-if="themeStore.darkTheme"
@@ -69,18 +59,14 @@ onUnmounted(() => {
         aria-label="Icono para el tema claro"
         @click="toggleTheme"
       />
-      <Icon
-        name="ic:round-watch-later"
-        class="header__buttons--icon"
-        aria-label="Icono de las últimas noticias"
-      />
-      <NuxtLink to="/weather"
-        ><Icon
+      <LanguageComponent />
+      <NuxtLink to="/weather">
+        <Icon
           name="fluent:weather-partly-cloudy-day-48-filled"
           class="header__buttons--icon-weather"
-          aria-label="Icono de el tiempo"
-      /></NuxtLink>
-
+          aria-label="Icono del tiempo"
+        />
+      </NuxtLink>
       <DropdownComponent />
     </div>
   </div>
@@ -101,33 +87,26 @@ onUnmounted(() => {
   transition: transform 0.3s ease-out;
   z-index: 1000;
 
-  &__logo {
-    display: flex;
-    align-items: center;
-    gap: 1em;
-    &--link {
-      display: flex;
-      align-items: center;
-      gap: 0.5em;
-      text-decoration: none;
-      color: inherit;
-    }
-  }
-
   &__buttons {
     display: flex;
     align-items: center;
     gap: 1em;
+    position: relative;
+
     &--icon {
       font-size: 1.7em;
       transition: transform 0.3s ease-in-out;
+      cursor: pointer;
+
       &:hover {
         transform: scale(1.1);
       }
     }
+
     &--icon-weather {
       transition: transform 0.3s ease-in-out;
       font-size: 2em;
+
       &:hover {
         transform: scale(1.1);
       }
@@ -138,7 +117,6 @@ onUnmounted(() => {
     background-color: var(--c-secondary);
     color: var(--c-primary);
   }
-
   &--hidden {
     transform: translateY(-100%);
   }
