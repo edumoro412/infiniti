@@ -3,6 +3,7 @@ import { ref, watch } from "vue";
 import { useRoute } from "vue-router";
 import { useThemeStore } from "~/stores/theme";
 
+const { locale } = useI18n();
 const theme = useThemeStore();
 const darkTheme = computed(() => theme.darkTheme);
 
@@ -11,7 +12,7 @@ const q = ref(route.query.q as string);
 
 const { data, error } = await useAsyncData("search-news", () =>
   $fetch("/api/search", {
-    query: { q: q.value },
+    query: { q: q.value, lang: locale.value },
   })
 );
 watch(
