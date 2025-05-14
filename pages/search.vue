@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { ref, watch } from "vue";
+import { ref } from "vue";
 import { useRoute } from "vue-router";
 import { useThemeStore } from "~/stores/theme";
 
@@ -10,22 +10,12 @@ const darkTheme = computed(() => theme.darkTheme);
 const route = useRoute();
 const q = ref(route.query.q as string);
 
-const { data, error } = await useAsyncData("search-news", () =>
-  $fetch("/api/search", {
-    query: { q: q.value, lang: locale.value },
-  })
-);
-watch(
-  () => route.query.q,
-  (newQuery) => {
-    q.value = newQuery as string;
-    data.value = null;
-    useAsyncData("search-news", () =>
-      $fetch("/api/search", {
-        query: { q: q.value },
-      })
-    );
-  }
+const { data, error } = await useAsyncData(
+  () =>
+    $fetch("/api/search", {
+      query: { q: q.value, lang: locale.value },
+    }),
+  { watch: [q, locale] }
 );
 </script>
 
@@ -46,13 +36,13 @@ watch(
     </div>
 
     <div v-if="data && data.results.length === 0" class="container__error">
-      <h1>Lo sentimos. No hemos encontraron noticias relacionadas</h1>
-      <NuxtLink to="/" class="container__error--button"
+      <h1>{{ $t("search.error") }}</h1>
+      <NuxtLink to="/"
         ><button
           class="container__error--button"
           :class="{ 'dark-theme__button': darkTheme }"
         >
-          Volver al inicio
+          {{ $t("search.return") }}
         </button></NuxtLink
       >
     </div>
@@ -73,13 +63,12 @@ watch(
 
     &--button {
       display: block;
-      background-color: var(--c-secondary);
       padding: 0.5em 1.5em;
       border: none;
       border-radius: 0.625rem;
       margin: 1em 0;
       &:hover {
-        background-color: var(--c-fourth);
+        background-color: var(--c-primary);
         color: var(--c-secondary);
       }
     }
@@ -90,6 +79,11 @@ watch(
   color: var(--c-secondary);
   &__button {
     background-color: var(--c-primary);
+    color: var(--c-secondary);
+    &:hover {
+      background-color: var(--c-secondary);
+      color: var(--c-primary);
+    }
   }
 }
 </style>
