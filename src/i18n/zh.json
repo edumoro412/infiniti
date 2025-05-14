@@ -1,0 +1,26 @@
+{
+  "categories": {
+    "sports": "体育",
+    "business": "商业",
+    "science": "科学",
+    "technology": "科技",
+    "health": "健康",
+    "entertainment": "娱乐"
+  },
+  "news_display": {
+    "news": "新闻"
+  },
+  "search": {
+    "error": "对不起。我们未找到相关的新闻",
+    "return": "返回首页"
+  },
+  "weather": {
+    "weather": "天气",
+    "ubication": "正在获取位置...",
+    "today": "今天",
+    "tomorrow": "明天",
+    "precipitations": "降水量",
+    "max": "最高气温",
+    "min": "最低气温"
+  }
+}
