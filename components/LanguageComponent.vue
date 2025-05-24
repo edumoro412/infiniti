@@ -29,6 +29,13 @@ const toggleLanguageDropdown = () => {
 const changeLanguage = (langCode: string) => {
   setLocale(langCode as Lang);
   showLanguageDropdown.value = false;
+  localStorage.removeItem("newsData_health");
+  localStorage.removeItem("newsData_science");
+  localStorage.removeItem("newsData_sports");
+  localStorage.removeItem("newsData_business");
+  localStorage.removeItem("newsData_technology");
+  localStorage.removeItem("newsData_entertainment");
+  window.location.reload();
 };
 
 watch(locale, (newLocale) => {

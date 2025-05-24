@@ -3,7 +3,10 @@ import type { Lang } from "~/interfaces/lang";
 
 export async function fetchCategories(category: string, locale: Lang) {
   const config = useRuntimeConfig();
-  let url = `https://newsdata.io/api/1/news?apikey=${config.currentsApiKey}&language=${locale}&country=es&category=${category}`;
+  let url =
+    locale === "es"
+      ? `https://newsdata.io/api/1/news?apikey=${config.currentsApiKey}&language=${locale}&country=es&category=${category}`
+      : `https://newsdata.io/api/1/news?apikey=${config.currentsApiKey}&language=${locale}&category=${category}`;
   let allNews: NewsArticle[] = [];
   let pageCounter = 0;
 
