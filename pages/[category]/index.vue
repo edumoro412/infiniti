@@ -56,7 +56,6 @@ const fetchData = async () => {
     }
   }
 };
-
 onMounted(() => {
   fetchData();
 });
