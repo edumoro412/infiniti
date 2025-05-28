@@ -4,7 +4,6 @@ import { useThemeStore } from "~/stores/theme";
 const themeStore = useThemeStore();
 
 const darkTheme = computed(() => themeStore.darkTheme);
-
 defineProps<{
   articles: NewsArticle[];
 }>();
@@ -31,6 +30,7 @@ defineProps<{
             :src="article.image_url || '/noticia.png'"
             :alt="`Imagen de la noticia: ${article.title}`"
             class="news__item--image"
+            @error="(e) => { const target = e.target as HTMLImageElement; target.src = '/noticia.png'; }"
           />
           <p>{{ truncText(article.description, 200) }}</p>
         </NuxtLink>
