@@ -1,5 +1,4 @@
 <script setup lang="ts">
-import { ref } from "vue";
 import { useRoute } from "vue-router";
 import { useThemeStore } from "~/stores/theme";
 
@@ -8,7 +7,7 @@ const theme = useThemeStore();
 const darkTheme = computed(() => theme.darkTheme);
 
 const route = useRoute();
-const q = ref(route.query.q as string);
+const q = computed(() => route.query.q as string);
 
 const { data, error } = await useAsyncData(
   () =>
@@ -34,8 +33,9 @@ const { data, error } = await useAsyncData(
     <div v-if="data && data.results.length > 0">
       <NewsDisplay :articles="data.results" />
     </div>
+    <div v-if="data?.results.length === 0">{{ $t("search.error") }}</div>
 
-    <div v-if="data && data.results.length === 0" class="container__error">
+    <div v-else class="container__error">
       <h1>{{ $t("search.error") }}</h1>
       <NuxtLink to="/"
         ><button
