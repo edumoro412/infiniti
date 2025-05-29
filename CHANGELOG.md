@@ -1,3 +1,10 @@
+## [1.0.1](https://github.com/edumoro412/infiniti/compare/v1.0.0...v1.0.1) (2025-05-29)
+
+
+### Bug Fixes
+
+* **i18n:** change default locale from French to Spanish ([5d3308e](https://github.com/edumoro412/infiniti/commit/5d3308e9807e80fbcfe6a68e085e1124a4108608))
+
 # 1.0.0 (2025-05-29)
 
 
