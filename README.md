@@ -4,6 +4,9 @@
 
 Una aplicación web moderna construida con **Nuxt 3** y **Vue 3** para explorar noticias, consultar el clima y personalizar tu experiencia con temas e idiomas. Todo en una interfaz intuitiva y responsiva.
 
+[![Docs](https://img.shields.io/badge/docs-read-blue)](https://infiniti-documentation.vercel.app/)
+
+
 ---
 
 ## ✨ Características principales
