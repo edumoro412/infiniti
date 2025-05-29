@@ -27,6 +27,8 @@
     "vue-router": "^4.5.0"
   },
   "devDependencies": {
+    "@semantic-release/git": "^10.0.1",
+    "@semantic-release/github": "^11.0.3",
     "@types/node": "^22.14.0",
     "sass": "^1.87.0",
     "semantic-release": "^24.2.5",

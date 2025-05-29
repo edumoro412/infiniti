@@ -17,7 +17,6 @@ onMounted(() => {
   const q = route.query.q as string;
   if (q) {
     search.value = q;
-    handleSubmit();
   }
 });
 </script>
@@ -34,6 +33,7 @@ onMounted(() => {
       type="text"
       class="form__input"
       :class="{ 'dark-form__input': darkTheme }"
+      :v-bind="search"
     />
     <button
       type="submit"
