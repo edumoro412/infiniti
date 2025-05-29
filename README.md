@@ -6,7 +6,7 @@ Una aplicación web moderna construida con **Nuxt 3** y **Vue 3** para explorar 
 
 **Documentacion**
 
-[![Docs](https://img.shields.io/badge/docs-read-blue)](https://infiniti-documentation.vercel.app/)
+📚 **[Ver la documentación](https://infiniti-documentation.vercel.app/)**
 
 
 ---
