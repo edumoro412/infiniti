@@ -41,7 +41,7 @@ export default defineEventHandler(async (event) => {
       }
     }
 
-    console.log("Estas son todas las noticias", allNews);
+    /*  console.log("Estas son todas las noticias", allNews); */
     return {
       status: "success",
       totalResults: allNews.length,
