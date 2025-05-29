@@ -1,75 +1,72 @@
-# Nuxt Minimal Starter
+# ♾️ INFINITI
 
-Look at the [Nuxt documentation](https://nuxt.com/docs/getting-started/introduction) to learn more.
+¡Bienvenido a **INFINITI**! 🚀
 
-## Setup
+Una aplicación web moderna construida con **Nuxt 3** y **Vue 3** para explorar noticias, consultar el clima y personalizar tu experiencia con temas e idiomas. Todo en una interfaz intuitiva y responsiva.
 
-Make sure to install dependencies:
+---
 
-```bash
-# npm
-npm install
+## ✨ Características principales
 
-# pnpm
-pnpm install
+- 📰 Visualización de noticias por categorías
+- 🔍 Búsqueda inteligente de noticias
+- ☀️ Información meteorológica integrada
+- 🌙 Tema oscuro y claro con persistencia
+- 🌐 Soporte multilenguaje (i18n)
+- 🧩 Componentes reutilizables y animaciones Lottie
 
-# yarn
-yarn install
+---
 
-# bun
-bun install
-```
-
-## Development Server
-
-Start the development server on `http://localhost:3000`:
+## ⚡ Instalación rápida
 
 ```bash
-# npm
-npm run dev
+# 1. Clona el repositorio
+ git clone <URL-del-repositorio>
+ cd infiniti
 
-# pnpm
-pnpm dev
+# 2. Instala las dependencias
+ npm install
 
-# yarn
-yarn dev
+# 3. Ejecuta en modo desarrollo
+ npm run dev
 
-# bun
-bun run dev
+# 4. Abre en tu navegador
+ http://localhost:3000
 ```
 
-## Production
+---
 
-Build the application for production:
+## 🗂️ Estructura del proyecto
 
-```bash
-# npm
-npm run build
-
-# pnpm
-pnpm build
-
-# yarn
-yarn build
-
-# bun
-bun run build
+```
+infiniti/
+├── components/      # Componentes Vue y su documentación
+├── docs/            # Documentación general del proyecto
+├── pages/           # Vistas y rutas principales
+├── stores/          # Estado global (Pinia)
+├���─ assets/          # Imágenes, iconos y estilos
+├── utils/           # Funciones auxiliares
+├── i18n/            # Archivos de traducción
+├── server/          # Endpoints y lógica backend
+├── nuxt.config.ts   # Configuración principal
+└── README.md        # Este archivo
 ```
 
-Locally preview production build:
+---
 
-```bash
-# npm
-npm run preview
+## 📚 Documentación
 
-# pnpm
-pnpm preview
+Toda la documentación está en la carpeta [`docs/`](./docs/index.mdx). Cada componente tiene su propio archivo `.mdx` en [`components/`](./components/).
 
-# yarn
-yarn preview
+---
 
-# bun
-bun run preview
-```
+## 👨‍💻 Créditos
 
-Check out the [deployment documentation](https://nuxt.com/docs/getting-started/deployment) for more information.
+- Desarrollado por [Tu Nombre o Equipo]
+- Basado en [Nuxt 3](https://nuxt.com/) y [Vue 3](https://vuejs.org/)
+
+---
+
+## 📝 Licencia
+
+Este proyecto está bajo la licencia MIT. ¡Siéntete libre de usarlo, mejorarlo y compartirlo! ❤️
