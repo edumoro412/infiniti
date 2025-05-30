@@ -67,7 +67,7 @@ Toda la documentación está en la carpeta [`docs/`](./docs/index.mdx). Cada com
 
 ## 👨‍💻 Créditos
 
-- Desarrollado por [Tu Nombre o Equipo]
+- Desarrollado por Eduardo Moro
 - Basado en [Nuxt 3](https://nuxt.com/) y [Vue 3](https://vuejs.org/)
 
 ---
