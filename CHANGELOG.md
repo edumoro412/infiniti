@@ -1,3 +1,10 @@
+# [1.1.0](https://github.com/edumoro412/infiniti/compare/v1.0.1...v1.1.0) (2025-05-30)
+
+
+### Features
+
+* **styles:** add flex mixin for flexible layout configuration ([aeefa24](https://github.com/edumoro412/infiniti/commit/aeefa24f352bfe3b93c2f9da4c801f03ecb8d6f3))
+
 ## [1.0.1](https://github.com/edumoro412/infiniti/compare/v1.0.0...v1.0.1) (2025-05-29)
 
 
