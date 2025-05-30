@@ -81,16 +81,13 @@ onUnmounted(() => {
   background-color: var(--c-primary);
   color: var(--c-secondary);
   padding: 0.5em;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
+  @include flex($justify: space-between, $align: center);
+
   transition: transform 0.3s ease-out;
   z-index: 1000;
 
   &__buttons {
-    display: flex;
-    align-items: center;
-    gap: 1em;
+    @include flex($justify: flex-start, $gap: 1em);
     position: relative;
 
     &--icon {

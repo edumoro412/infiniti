@@ -58,9 +58,7 @@ const { data, error } = await useAsyncData(
   }
   &__error {
     padding: 5em 0;
-    @include center();
-    flex-direction: column;
-
+    @include flex(column);
     &--button {
       display: block;
       padding: 0.5em 1.5em;

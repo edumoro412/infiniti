@@ -51,8 +51,8 @@ onMounted(() => {
 
 <style scoped lang="scss">
 .form {
-  display: flex;
-  justify-content: center;
+  @include flex($align: flex-start);
+
   padding: 0 0 2em 0;
   gap: 1em;
   align-items: center;
@@ -76,9 +76,8 @@ onMounted(() => {
     border: none;
     padding: 0.8em 1.2em;
     border-radius: 1em;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    @include flex();
+
     cursor: pointer;
     transition: all 0.3s ease;
     &:hover {

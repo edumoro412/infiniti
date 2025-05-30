@@ -69,14 +69,12 @@ const goHome = () => {
   }
 
   &__animation {
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    @include flex();
   }
 
   &__button {
-    display: flex;
-    justify-content: center;
+    @include flex();
+
     &--button {
       background-color: var(--c-primary);
       padding: 1rem 2rem;

@@ -120,9 +120,8 @@ onUnmounted(() => {
     color: var(--c-secondary);
 
     &--option {
-      display: flex;
-      align-items: center;
-      gap: 0.5em;
+      @include flex($justify: flex-start, $gap: 0.5em);
+
       padding: 0.5em;
       cursor: pointer;
       transition: all 0.2s ease;

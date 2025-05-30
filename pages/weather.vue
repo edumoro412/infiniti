@@ -92,9 +92,7 @@ const { data: weatherData } = useFetch<Weather>("/api/weather", {
   background: linear-gradient(135deg, #81ceec, #034879);
 
   color: var(--c-secondary);
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+  @include flex(column);
   transition: background-color 0.3s ease, color 0.3s ease;
 
   &__title {
@@ -103,10 +101,8 @@ const { data: weatherData } = useFetch<Weather>("/api/weather", {
 }
 
 .weather {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 2rem;
+  @include flex($align: flex-start);
+
   width: 100%;
   max-width: 1200px;
 
