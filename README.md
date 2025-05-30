@@ -57,21 +57,10 @@ infiniti/
 └── README.md        # Este archivo
 ```
 
----
-
-## 📚 Documentación
-
-Toda la documentación está en la carpeta [`docs/`](./docs/index.mdx). Cada componente tiene su propio archivo `.mdx` en [`components/`](./components/).
-
----
 
 ## 👨‍💻 Créditos
 
 - Desarrollado por Eduardo Moro
 - Basado en [Nuxt 3](https://nuxt.com/) y [Vue 3](https://vuejs.org/)
 
----
 
-## 📝 Licencia
-
-Este proyecto está bajo la licencia MIT. ¡Siéntete libre de usarlo, mejorarlo y compartirlo! ❤️
