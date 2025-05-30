@@ -80,9 +80,7 @@ onMounted(() => {
   background-color: var(--c-secondary);
   min-height: 100vh;
   padding: 10em 0;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  @include flex();
   font-size: 2em;
 }
 .dark-theme {
