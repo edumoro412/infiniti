@@ -14,13 +14,11 @@
 
 <style scoped lang="scss">
 .logo {
-  display: flex;
-  align-items: center;
-  gap: 1em;
+  @include flex($justify: flex-start, $gap: 1em);
+
   &__link {
-    display: flex;
-    align-items: center;
-    gap: 0.5em;
+    @include flex($justify: flex-start, $gap: 0.5em);
+
     text-decoration: none;
     color: inherit;
   }

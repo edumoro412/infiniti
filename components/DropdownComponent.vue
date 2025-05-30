@@ -65,8 +65,7 @@ onBeforeUnmount(() => {
 <style scoped lang="scss">
 .dropdown {
   position: relative;
-  display: flex;
-  align-items: center;
+  @include flex($justify: flex-start);
 
   &__icon {
     transition: transform 0.3s ease-in-out;
@@ -79,8 +78,7 @@ onBeforeUnmount(() => {
 
   &__menu {
     position: absolute;
-    display: flex;
-    flex-wrap: wrap;
+    @include flex($justify: flex-start, $align: flex-start, $gap: 0.5em);
     top: 120%;
     right: 0;
     background-color: var(--c-primary);
