@@ -14,14 +14,14 @@ defineProps<{
 </script>
 <template>
   <div class="icon">
-    <IconClearDay v-if="prec === 0 && max > 20 && min > 10" alt="Día soleado" />
+    <IconClearDay v-if="prec < 2 && max > 20 && min > 10" alt="Día soleado" />
     <IconPartlyCloud
-      v-else-if="prec === 0 && max > 15 && max <= 25 && min >= 5"
+      v-else-if="prec < 2 && max > 15 && max <= 25 && min >= 5"
       alt="Parcialmente nublado"
     />
-    <IconCloudy v-else-if="prec === 0 && max <= 15 && min < 10" alt="Nublado" />
+    <IconCloudy v-else-if="prec < 2 && max <= 15 && min < 10" alt="Nublado" />
     <IconPartlyCloudRain
-      v-else-if="prec > 0 && prec <= 5 && max > 10"
+      v-else-if="prec >= 2 && prec <= 5 && max > 10"
       alt="Chubascos leves"
     />
     <IconRain v-else-if="prec > 5" alt="Lluvia fuerte" />
