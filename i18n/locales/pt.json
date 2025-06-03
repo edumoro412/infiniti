@@ -21,7 +21,11 @@
     "tomorrow": "Amanhã",
     "precipitations": "Precipitações",
     "max": "Temperatura máxima",
-    "min": "Temperatura mínima"
+    "min": "Temperatura mínima",
+    "error": "É necessário o acesso à localização",
+    "retry": "Obter localização",
+    "permissionDenied": "Permissão de localização negada 😤. Ative-a para exibir o clima.",
+    "permissionDeniedHelp": "Vá para as configurações do seu navegador e permita o acesso à localização."
   },
   "error": {
     "error": "Ops... Algo não saiu como deveria"

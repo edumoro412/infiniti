@@ -21,7 +21,11 @@
     "tomorrow": "Morgen",
     "precipitations": "Niederschläge",
     "max": "Höchsttemperatur",
-    "min": "Tiefsttemperatur"
+    "min": "Tiefsttemperatur",
+    "error": "Standortzugriff ist erforderlich",
+    "retry": "Standort ermitteln",
+    "permissionDenied": "Standortberechtigung verweigert 😤. Bitte aktivieren, um das Wetter anzuzeigen.",
+    "permissionDeniedHelp": "Gehe zu den Einstellungen deines Browsers und erlaube den Standortzugriff."
   },
   "error": {
     "error": "Ups... Etwas ist schiefgelaufen"
