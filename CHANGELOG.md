@@ -1,3 +1,10 @@
+## [1.3.1](https://github.com/edumoro412/infiniti/compare/v1.3.0...v1.3.1) (2025-06-03)
+
+
+### Bug Fixes
+
+* **components:** update precipitation conditions for weather icons ([977c666](https://github.com/edumoro412/infiniti/commit/977c6660004e084bce171944d29511ae252ee8e8))
+
 # [1.3.0](https://github.com/edumoro412/infiniti/compare/v1.2.0...v1.3.0) (2025-06-03)
 
 
