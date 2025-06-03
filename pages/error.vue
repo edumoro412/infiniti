@@ -2,6 +2,10 @@
 import { useThemeStore } from "~/stores/theme";
 import { useRouter } from "vue-router";
 
+definePageMeta({
+  layout: false,
+});
+
 const store = useThemeStore();
 const darkTheme = computed(() => store.darkTheme);
 const router = useRouter();
