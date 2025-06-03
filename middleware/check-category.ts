@@ -8,20 +8,22 @@ export default defineNuxtRouteMiddleware((to) => {
     "science",
   ];
 
+  const category = to.params.category as string;
+
   if ((to.params.category as string) === "deportes") {
     return navigateTo("/sports");
-  } else if ((to.params.category as string) === "tecnologia") {
+  } else if (category === "tecnologia") {
     return navigateTo("/technology");
-  } else if ((to.params.category as string) === "salud") {
+  } else if (category === "salud") {
     return navigateTo("/health");
-  } else if ((to.params.category as string) === "entretenimiento") {
+  } else if (category === "entretenimiento") {
     return navigateTo("/entertainment");
-  } else if ((to.params.category as string) === "negocios") {
+  } else if (category === "negocios") {
     return navigateTo("/business");
-  } else if ((to.params.category as string) === "ciencia") {
+  } else if (category === "ciencia") {
     return navigateTo("/science");
   } else {
-    if (!validCategories.includes(to.params.category as string)) {
+    if (!validCategories.includes(category) && to.path !== "/error") {
       return navigateTo("/error");
     }
   }
