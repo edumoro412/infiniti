@@ -1,3 +1,10 @@
+# [1.2.0](https://github.com/edumoro412/infiniti/compare/v1.1.0...v1.2.0) (2025-06-03)
+
+
+### Features
+
+* **error:** add error page with dark theme support and animations ([26e0d3f](https://github.com/edumoro412/infiniti/commit/26e0d3fe3ebe0aa7f6617932b6f7c9a4343ccc7a))
+
 # [1.1.0](https://github.com/edumoro412/infiniti/compare/v1.0.1...v1.1.0) (2025-05-30)
 
 
