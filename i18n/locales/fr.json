@@ -21,7 +21,11 @@
     "tomorrow": "Demain",
     "precipitations": "Précipitations",
     "max": "Température maximale",
-    "min": "Température minimale"
+    "min": "Température minimale",
+    "error": "L'accès à la localisation est requis",
+    "retry": "Obtenir la position",
+    "permissionDenied": "Autorisation de localisation refusée 😤. Activez-la pour afficher la météo.",
+    "permissionDeniedHelp": "Allez dans les paramètres de votre navigateur et autorisez l'accès à la localisation."
   },
   "error": {
     "error": "Oups... Quelque chose ne s'est pas passé comme prévu"

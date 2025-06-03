@@ -21,7 +21,11 @@
     "tomorrow": "Tomorrow",
     "precipitations": "Precipitation",
     "max": "Maximum temperature",
-    "min": "Minimum temperature"
+    "min": "Minimum temperature",
+    "error": "Location access is required",
+    "retry": "Get location",
+    "permissionDenied": "Location permission denied 😤. Enable it to display the weather.",
+    "permissionDeniedHelp": "Go to your browser settings and allow location access."
   },
   "error": {
     "error": "Oops... Something didn't go as it should"

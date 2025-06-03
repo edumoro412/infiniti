@@ -21,7 +21,11 @@
     "tomorrow": "Domani",
     "precipitations": "Precipitazioni",
     "max": "Temperatura massima",
-    "min": "Temperatura minima"
+    "min": "Temperatura minima",
+    "error": "È necessario l'accesso alla posizione",
+    "retry": "Ottieni posizione",
+    "permissionDenied": "Permesso di posizione negato 😤. Abilitalo per visualizzare il meteo.",
+    "permissionDeniedHelp": "Vai nelle impostazioni del tuo browser e consenti l'accesso alla posizione."
   },
   "error": {
     "error": "Ops... Qualcosa è andato storto"
