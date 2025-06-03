@@ -1,3 +1,11 @@
+# [1.3.0](https://github.com/edumoro412/infiniti/compare/v1.2.0...v1.3.0) (2025-06-03)
+
+
+### Features
+
+* **i18n:** add location access messages to weather localization files ([d114787](https://github.com/edumoro412/infiniti/commit/d1147877e53c7d8f4e0c45ddade0688910378a1f))
+* **pages:** add geolocation permission handling and user feedback ([44e5494](https://github.com/edumoro412/infiniti/commit/44e549452e438bea22e8e22646ee711fa141292e))
+
 # [1.2.0](https://github.com/edumoro412/infiniti/compare/v1.1.0...v1.2.0) (2025-06-03)
 
 
