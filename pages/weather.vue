@@ -10,6 +10,7 @@ const darkTheme = computed(() => theme.darkTheme);
 const latitude = ref<number | null>(null);
 const longitude = ref<number | null>(null);
 const isLoading = ref(true);
+const permissionStatus = ref<PermissionState | null>(null);
 
 const formatDate = (dateStr: string): string => {
   const date = new Date(dateStr);
@@ -22,21 +23,45 @@ const formatDate = (dateStr: string): string => {
   return formatted.charAt(0).toUpperCase() + formatted.slice(1);
 };
 
-onMounted(async () => {
-  await new Promise<void>((resolve) => {
+const checkPermission = async () => {
+  try {
+    const result = await navigator.permissions.query({ name: "geolocation" });
+    permissionStatus.value = result.state;
+    result.onchange = () => {
+      permissionStatus.value = result.state;
+    };
+  } catch (err) {
+    console.error("No se pudo comprobar el permiso de geolocalización", err);
+    permissionStatus.value = null;
+  }
+};
+
+const getLocation = () => {
+  isLoading.value = true;
+  return new Promise<void>((resolve) => {
     navigator.geolocation.getCurrentPosition(
       (position) => {
         latitude.value = position.coords.latitude;
         longitude.value = position.coords.longitude;
         resolve();
       },
-      () => {
-        console.error("Error obteniendo ubicación");
+      (error) => {
+        console.error("Error obteniendo ubicación:", error.message);
         resolve();
       }
     );
+  }).finally(() => {
+    isLoading.value = false;
   });
-  isLoading.value = false;
+};
+
+onMounted(async () => {
+  await checkPermission();
+  if (permissionStatus.value !== "denied") {
+    await getLocation();
+  } else {
+    isLoading.value = false;
+  }
 });
 
 const { data: weatherData } = useFetch<Weather>("/api/weather", {
@@ -48,10 +73,18 @@ const { data: weatherData } = useFetch<Weather>("/api/weather", {
   immediate: false,
 });
 </script>
+
 <template>
   <div :class="['container', { 'dark-theme': darkTheme }]">
     <h1 class="container__title">{{ $t("weather.weather") }}</h1>
-    <div v-if="isLoading">{{ $t("weather.ubication") }}</div>
+
+    <div v-if="permissionStatus === 'denied'" class="permission-warning">
+      <p>{{ $t("weather.permissionDenied") }}</p>
+      <p>{{ $t("weather.permissionDeniedHelp") }}</p>
+    </div>
+
+    <div v-else-if="isLoading">{{ $t("weather.ubication") }}</div>
+
     <div v-else-if="weatherData" class="weather">
       <div
         v-for="(day, index) in weatherData.daily.time"
@@ -81,6 +114,16 @@ const { data: weatherData } = useFetch<Weather>("/api/weather", {
           {{ weatherData.daily.temperature_2m_min[index] }}°C
         </p>
       </div>
+    </div>
+
+    <div v-else class="retry">
+      <h2>{{ $t("weather.error") }}</h2>
+      <button
+        :class="['retry-button', { 'retry-button__darktheme': darkTheme }]"
+        @click="getLocation"
+      >
+        {{ $t("weather.retry") }}
+      </button>
     </div>
   </div>
 </template>
@@ -158,5 +201,46 @@ const { data: weatherData } = useFetch<Weather>("/api/weather", {
     border: 1px solid rgba(255, 255, 255, 0.1);
     box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
   }
+}
+
+.retry {
+  @include flex(column);
+  &-button {
+    margin-top: 1rem;
+    padding: 0.8rem 1.5rem;
+    font-size: 1rem;
+    background-color: var(--c-primary);
+    color: white;
+    border: none;
+    border-radius: 0.6rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+
+    &:hover {
+      background-color: var(--c-secondary);
+      color: black;
+    }
+
+    &__darktheme {
+      background-color: var(--c-secondary);
+      color: var(--c-primary);
+
+      &:hover {
+        background-color: var(--c-fourth);
+        color: var(--c-secondary);
+      }
+    }
+  }
+}
+
+.permission-warning {
+  background: #ffdddd;
+  border: 1px solid #ff5c5c;
+  color: #a70000;
+  padding: 1rem 1.5rem;
+  margin-bottom: 1.5rem;
+  border-radius: 0.8rem;
+  font-weight: 600;
+  text-align: center;
 }
 </style>
