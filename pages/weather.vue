@@ -115,16 +115,6 @@ const { data: weatherData } = useFetch<Weather>("/api/weather", {
         </p>
       </div>
     </div>
-
-    <div v-else class="retry">
-      <h2>{{ $t("weather.error") }}</h2>
-      <button
-        :class="['retry-button', { 'retry-button__darktheme': darkTheme }]"
-        @click="getLocation"
-      >
-        {{ $t("weather.retry") }}
-      </button>
-    </div>
   </div>
 </template>
 
