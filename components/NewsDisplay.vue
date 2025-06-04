@@ -61,6 +61,7 @@ defineProps<{
     }
     &--image {
       width: 100%;
+      max-width: 100%;
     }
     &:hover {
       transform: scale(1.02);
