@@ -1,3 +1,10 @@
+## [1.3.2](https://github.com/edumoro412/infiniti/compare/v1.3.1...v1.3.2) (2025-06-04)
+
+
+### Bug Fixes
+
+* **components:** ensure image does not exceed maximum width in news display ([8fda11a](https://github.com/edumoro412/infiniti/commit/8fda11a96a3de346c1d426915311deda7340815f))
+
 ## [1.3.1](https://github.com/edumoro412/infiniti/compare/v1.3.0...v1.3.1) (2025-06-03)
 
 
