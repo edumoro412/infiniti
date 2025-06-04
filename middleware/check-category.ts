@@ -1,30 +1,20 @@
 export default defineNuxtRouteMiddleware((to) => {
-  const validCategories = [
-    "sports",
-    "technology",
-    "health",
-    "entertainment",
-    "business",
-    "science",
-  ];
+  const categoryMap: Record<string, string> = {
+    deportes: "sports",
+    tecnologia: "technology",
+    salud: "health",
+    entretenimiento: "entertainment",
+    negocios: "business",
+    ciencia: "science",
+  };
 
+  const validCategories = Object.values(categoryMap);
   const category = to.params.category as string;
 
-  if ((to.params.category as string) === "deportes") {
-    return navigateTo("/sports");
-  } else if (category === "tecnologia") {
-    return navigateTo("/technology");
-  } else if (category === "salud") {
-    return navigateTo("/health");
-  } else if (category === "entretenimiento") {
-    return navigateTo("/entertainment");
-  } else if (category === "negocios") {
-    return navigateTo("/business");
-  } else if (category === "ciencia") {
-    return navigateTo("/science");
-  } else {
-    if (!validCategories.includes(category) && to.path !== "/error") {
-      return navigateTo("/error");
-    }
+  if (categoryMap[category]) {
+    return navigateTo(`/${categoryMap[category]}`);
+  }
+  if (!validCategories.includes(category) && to.path !== "/error") {
+    return navigateTo("/error");
   }
 });
