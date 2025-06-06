@@ -54,7 +54,7 @@ defineProps<NewsDisplayProps>();
     object-fit: cover;
     width: 100%;
     height: auto;
-    max-height: 20rem;
+    max-height: 25rem;
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
 
     @media (max-width: 768px) {
