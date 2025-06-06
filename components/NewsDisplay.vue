@@ -1,15 +1,14 @@
 <script setup lang="ts">
-import type { NewsArticle } from "~/interfaces/api/new";
+import type { NewsDisplayProps } from "~/interfaces/api/new";
 import { useThemeStore } from "~/stores/theme";
 const themeStore = useThemeStore();
 
 const darkTheme = computed(() => themeStore.darkTheme);
-defineProps<{
-  articles: NewsArticle[];
-}>();
+defineProps<NewsDisplayProps>();
 </script>
 <template>
   <div class="container" :class="{ 'dark-theme': darkTheme }">
+    <img class="container__banner" :src="banner" alt="Banner" />
     <h1 class="container__title">{{ $t("news_display.news") }}</h1>
     <FormComponent />
     <ul class="news">
@@ -50,7 +49,19 @@ defineProps<{
 <style scoped lang="scss">
 .container {
   min-height: 100vh;
-  padding: 5em 0;
+  &__banner {
+    aspect-ratio: 16 / 9;
+    object-fit: cover;
+    width: 100%;
+    height: auto;
+    max-height: 25rem;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+
+    @media (max-width: 768px) {
+      max-height: 12rem;
+      aspect-ratio: 16 / 9;
+    }
+  }
   &__title {
     @include title();
   }
@@ -73,12 +84,12 @@ defineProps<{
     }
     &--source {
       @include flex($justify: flex-start, $gap: 0.5em);
-      padding: 0.5em;
+      padding: 0 1em 1em 1em;
       font-size: 0.9em;
     }
     &--writer {
       @include flex($justify: flex-start, $gap: 0.5em);
-      padding: 0 0.5em 2em 0.5em;
+      padding: 0 1em 2em 1em;
       font-size: 0.9em;
     }
 
