@@ -18,3 +18,8 @@ export interface NewsResponse {
   nextPage: string | null;
   results: NewsArticle[];
 }
+
+export interface NewsDisplayProps {
+  articles: NewsArticle[];
+  banner?: string;
+}
