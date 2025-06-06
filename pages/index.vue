@@ -55,7 +55,7 @@ watch(
       <Icon name="line-md:loading-twotone-loop" class="dark-theme__icon" />
     </div>
     <div v-else>
-      <NewsDisplay :articles="articles" />
+      <NewsDisplay :articles="articles" banner="news_banner.png" />
     </div>
   </div>
 </template>
