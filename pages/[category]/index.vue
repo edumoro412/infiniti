@@ -56,8 +56,28 @@ const fetchData = async () => {
     }
   }
 };
+console.log("cateogria", category.value);
 onMounted(() => {
   fetchData();
+});
+
+const banner = computed(() => {
+  switch (category.value) {
+    case "sports":
+      return "sports_banner.png";
+    case "technology":
+      return "technology_banner.png";
+    case "business":
+      return "business_banner.png";
+    case "science":
+      return "science_banner.png"; //falta
+    case "health":
+      return "health_banner.png";
+    case "entertainment":
+      return "entertainment_banner.png"; //mejorar
+    default:
+      return "news_banner_2.png";
+  }
 });
 </script>
 
@@ -71,7 +91,7 @@ onMounted(() => {
       <Icon name="line-md:loading-twotone-loop" class="dark-theme__icon" />
     </div>
     <div v-else>
-      <NewsDisplay :articles="articles" />
+      <NewsDisplay :articles="articles" :banner="banner" />
     </div>
   </div>
 </template>
