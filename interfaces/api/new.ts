@@ -9,6 +9,7 @@ export interface NewsArticle {
   country: string[];
   category: string[];
   description: string;
+  creator?: string[];
 }
 
 export interface NewsResponse {
