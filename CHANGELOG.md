@@ -1,3 +1,20 @@
+# [1.5.0](https://github.com/edumoro412/infiniti/compare/v1.4.0...v1.5.0) (2025-06-06)
+
+
+### Bug Fixes
+
+* **components:** add banner prop to NewsDisplay in index.vue ([2913496](https://github.com/edumoro412/infiniti/commit/291349628860778692a9cd463ee61326bacca3ef))
+* **components:** increase max-height of banner in NewsDisplay to 25rem ([71abbb2](https://github.com/edumoro412/infiniti/commit/71abbb2f85aa2812f92ba298ccfc389f8dc21413))
+* **components:** pass computed banner prop to NewsDisplay in index.vue ([526c836](https://github.com/edumoro412/infiniti/commit/526c8361e0b85d87c674f6823cde039020835d5f))
+* **components:** update NewsDisplay to use NewsDisplayProps and enhance banner styling ([dacf13f](https://github.com/edumoro412/infiniti/commit/dacf13f0098ee249ec0c87ba84d002b545f97c5b))
+* **interfaces:** add missing properties to NewsDisplayProps interface ([14ea90d](https://github.com/edumoro412/infiniti/commit/14ea90d9965b88a6d8e66d39e365b5926cfab256))
+* **search:** add banner prop to NewsDisplay in search.vue and adjust padding ([1853468](https://github.com/edumoro412/infiniti/commit/1853468132728e2f3b195c1da40eaf62fadf4063))
+
+
+### Features
+
+* **public:** add new banner images for various categories ([571742f](https://github.com/edumoro412/infiniti/commit/571742f0f11a90f1d87725eb331f802095b73e18))
+
 # [1.4.0](https://github.com/edumoro412/infiniti/compare/v1.3.2...v1.4.0) (2025-06-06)
 
 
