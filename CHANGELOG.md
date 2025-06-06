@@ -1,3 +1,17 @@
+# [1.4.0](https://github.com/edumoro412/infiniti/compare/v1.3.2...v1.4.0) (2025-06-06)
+
+
+### Bug Fixes
+
+* **interfaces:** add optional creator field to NewsArticle interface ([4e95207](https://github.com/edumoro412/infiniti/commit/4e9520753cd3d73ebca384648c646eb45458fdda))
+* **styles:** add missing secondary dark color variable ([18b12fd](https://github.com/edumoro412/infiniti/commit/18b12fdb0a6b4f1201a35467f11eb5af3429bf72))
+* **styles:** update background color for news items to use secondary dark variable ([6ed1e1b](https://github.com/edumoro412/infiniti/commit/6ed1e1b9fd0478a9074011a4459649059b98049c))
+
+
+### Features
+
+* **components:** enhance NewsDisplay with source and creator information ([fd95c91](https://github.com/edumoro412/infiniti/commit/fd95c9157fa3e5a58d32541126e0d433270e18cb))
+
 ## [1.3.2](https://github.com/edumoro412/infiniti/compare/v1.3.1...v1.3.2) (2025-06-04)
 
 
