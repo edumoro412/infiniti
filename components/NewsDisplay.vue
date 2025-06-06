@@ -60,7 +60,7 @@ defineProps<{
   @include grid(2em);
   &__item {
     min-width: fit-content;
-    background-color: var(--c-secondary);
+    background-color: var(--c-secondary-dark);
     border-radius: 2em;
     transition: all 0.3s ease-in-out;
     overflow: hidden;
