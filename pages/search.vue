@@ -31,7 +31,7 @@ const { data, error } = await useAsyncData(
     <div v-if="error">❌ Error: {{ error.message }}</div>
 
     <div v-if="data && data.results.length > 0">
-      <NewsDisplay :articles="data.results" />
+      <NewsDisplay :articles="data.results" banner="search_banner.png" />
     </div>
     <div v-if="data?.results.length === 0">{{ $t("search.error") }}</div>
 
@@ -52,7 +52,7 @@ const { data, error } = await useAsyncData(
 <style scoped lang="scss">
 .container {
   min-height: 100vh;
-  padding: 2em 0;
+  padding: 0 0 2em 0;
   &__loading {
     @include center();
   }
