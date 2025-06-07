@@ -1,3 +1,19 @@
+# [1.7.0](https://github.com/edumoro412/infiniti/compare/v1.6.0...v1.7.0) (2025-06-07)
+
+
+### Bug Fixes
+
+* **components:** restructure NewsDisplay template for better layout and readability ([2956ce4](https://github.com/edumoro412/infiniti/commit/2956ce4792ff8a003303e7d5ad293410349eee90))
+* **components:** update FormComponent styles for improved visibility ([d6f8e64](https://github.com/edumoro412/infiniti/commit/d6f8e64377770fedae489cc042c4fe7afe6bd2aa))
+
+
+### Features
+
+* **api:** add new event handler for fetching latest news article by slug ([c4ec857](https://github.com/edumoro412/infiniti/commit/c4ec857626d2a6fedea26c61ef830a3df4a55efc))
+* **i18n:** add new message translations for multiple languages ([f9ad65e](https://github.com/edumoro412/infiniti/commit/f9ad65e91571c11bc252f40a63c39f6d182e5419))
+* **interfaces:** add NewResponse interface for single article response structure ([fa1996a](https://github.com/edumoro412/infiniti/commit/fa1996a2628ed6efb89fce558e5f5e96da06dcad))
+* **pages:** implement new article display component with dynamic data fetching ([a3d004d](https://github.com/edumoro412/infiniti/commit/a3d004d8ef53beaac1f7116fe4fd1a9c2e751b5a))
+
 # [1.6.0](https://github.com/edumoro412/infiniti/compare/v1.5.0...v1.6.0) (2025-06-07)
 
 
