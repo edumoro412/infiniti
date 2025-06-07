@@ -18,6 +18,12 @@ export interface NewsResponse {
   nextPage: string | null;
   results: NewsArticle[];
 }
+export interface NewResponse {
+  status: string;
+  totalResults: number;
+  nextPage: string | null;
+  results: NewsArticle;
+}
 
 export interface NewsDisplayProps {
   articles: NewsArticle[];
