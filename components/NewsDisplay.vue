@@ -9,8 +9,12 @@ defineProps<NewsDisplayProps>();
 <template>
   <div class="container" :class="{ 'dark-theme': darkTheme }">
     <img class="container__banner" :src="banner" alt="Banner" />
-    <h1 class="container__title">{{ $t("news_display.news") }}</h1>
-    <FormComponent />
+    <section class="container__title">
+      <h1 class="container__title--h1">
+        {{ $t("news_display.news") }}
+      </h1>
+      <FormComponent />
+    </section>
     <ul class="news">
       <li
         v-for="article in articles"
@@ -19,8 +23,7 @@ defineProps<NewsDisplayProps>();
         :class="{ 'dark-theme-news': darkTheme }"
       >
         <NuxtLink
-          :to="article.link"
-          target="_blank"
+          :to="`/new/${article.article_id}`"
           alt="noticia"
           :title="article.title"
         >
@@ -31,7 +34,6 @@ defineProps<NewsDisplayProps>();
             @error="(e) => { const target = e.target as HTMLImageElement; target.src = '/noticia.png'; }"
           />
           <h2 class="news__item--title">{{ article.title }}</h2>
-          <!-- <p>{{ truncText(article.description, 200) }}</p> -->
           <h3 class="news__item--source">
             <Icon name="famicons:newspaper" />{{ article.source_name }}
           </h3>
@@ -64,7 +66,10 @@ defineProps<NewsDisplayProps>();
     }
   }
   &__title {
-    @include title();
+    @include flex($justify: flex-start);
+    &--h1 {
+      @include title($text-align: flex-start, $padding: 0.5em 0.2em);
+    }
   }
 }
 

@@ -57,12 +57,12 @@ onMounted(() => {
   gap: 1em;
   align-items: center;
   &__input {
-    background-color: var(--c-fourth);
-    padding: 0.7em 1.2em;
+    background-color: #abacad;
+    padding: 0.4em;
     border-radius: 0.5em;
     border: none;
     text-align: center;
-    color: white;
+    color: #000;
     font-size: 1em;
     width: 12.5em;
     transition: all 0.3s ease;
@@ -72,14 +72,19 @@ onMounted(() => {
   }
 
   &__button {
-    background-color: var(--c-fourth);
+    background-color: #abacad;
     border: none;
-    padding: 0.8em 1.2em;
+    padding: 0.4em 1.2em;
     border-radius: 1em;
+    color: #000;
     @include flex();
 
     cursor: pointer;
     transition: all 0.3s ease;
+
+    &--icon {
+      color: #000;
+    }
     &:hover {
       background-color: var(--c-secondary);
       .form__button--icon {
@@ -89,7 +94,7 @@ onMounted(() => {
 
     &--icon {
       font-size: 1.5em;
-      color: var(--c-secondary);
+      color: #000;
       transition: color 0.3s ease;
     }
   }
