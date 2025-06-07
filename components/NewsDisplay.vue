@@ -49,6 +49,7 @@ defineProps<NewsDisplayProps>();
 <style scoped lang="scss">
 .container {
   min-height: 100vh;
+  padding: 0 0 2em 0;
   &__banner {
     aspect-ratio: 16 / 9;
     object-fit: cover;
