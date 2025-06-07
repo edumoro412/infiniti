@@ -1,3 +1,16 @@
+# [1.6.0](https://github.com/edumoro412/infiniti/compare/v1.5.0...v1.6.0) (2025-06-07)
+
+
+### Bug Fixes
+
+* **components:** adjust padding for container in NewsDisplay component ([68012f8](https://github.com/edumoro412/infiniti/commit/68012f84b1724f294de797f0c3c04e35d857e23f))
+* **layout:** ensure FooterComponent is rendered in default layout ([f35d132](https://github.com/edumoro412/infiniti/commit/f35d132cbe1e31fc9327a464a86cf7a239d59ddf))
+
+
+### Features
+
+* **components:** add FooterComponent with navigation and social links ([c93191e](https://github.com/edumoro412/infiniti/commit/c93191ef06ddb35655f36e94315f0aa085aa3bee))
+
 # [1.5.0](https://github.com/edumoro412/infiniti/compare/v1.4.0...v1.5.0) (2025-06-06)
 
 
