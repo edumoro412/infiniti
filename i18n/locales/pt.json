@@ -29,5 +29,9 @@
   },
   "error": {
     "error": "Ops... Algo não saiu como deveria"
+  },
+  "new": {
+    "no_description": "Infelizmente, não temos acesso a mais informações sobre esta notícia. Se quiser saber mais, clique no botão para ir diretamente a ela.",
+    "new_link": "Ir para a notícia"
   }
 }

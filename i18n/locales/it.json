@@ -29,5 +29,9 @@
   },
   "error": {
     "error": "Ops... Qualcosa è andato storto"
+  },
+  "new": {
+    "no_description": "Purtroppo non abbiamo accesso a ulteriori informazioni su questa notizia. Se vuoi saperne di più, clicca sul pulsante per andare direttamente alla notizia.",
+    "new_link": "Vai alla notizia"
   }
 }

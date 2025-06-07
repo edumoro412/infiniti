@@ -29,5 +29,9 @@
   },
   "error": {
     "error": "Oups... Quelque chose ne s'est pas passé comme prévu"
+  },
+  "new": {
+    "no_description": "Malheureusement, nous n'avons pas accès à plus d'informations sur cette actualité. Si vous souhaitez en savoir plus, cliquez sur le bouton pour y accéder directement.",
+    "new_link": "Aller à la nouvelle"
   }
 }

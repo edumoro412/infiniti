@@ -29,5 +29,9 @@
   },
   "error": {
     "error": "Ups... Etwas ist schiefgelaufen"
+  },
+  "new": {
+    "no_description": "Leider haben wir keinen Zugriff auf weitere Informationen zu dieser Nachricht. Wenn du mehr erfahren möchtest, klicke auf den Button, um direkt dorthin zu gelangen.",
+    "new_link": "Zur Nachricht"
   }
 }

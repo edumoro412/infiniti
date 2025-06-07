@@ -29,5 +29,9 @@
   },
   "error": {
     "error": "Oops... Something didn't go as it should"
+  },
+  "new": {
+    "no_description": "Unfortunately, we do not have access to more information about this news. If you want to know more, click the button to go directly to it.",
+    "new_link": "Go to the new"
   }
 }
